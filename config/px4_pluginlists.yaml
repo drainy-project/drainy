@@ -1,0 +1,35 @@
+# Disable problematic plugins that publish empty TF frames
+# All other plugins will be loaded by default
+
+# sys_plugins:
+#   - sys_status
+#   - sys_time
+
+# plugins:
+#   - 3dr_radio
+#   - actuator_control
+#   - command
+#   - dummy
+#   - imu_pub
+#   - local_position
+#   - param
+#   - rc_io
+#   - setpoint_accel
+#   - setpoint_attitude
+#   - setpoint_position
+#   - setpoint_raw
+#   - setpoint_velocity
+#   - global_position
+#   - ftp
+
+# extras:
+#   - camera
+#   - distance_sensor
+#   - image_pub
+#   - landing_target       # DISABLED: causes empty TF frames
+#   - mocap_pose_estimate  # DISABLED: causes empty TF frames
+#   - fake_gps             # DISABLED: causes empty TF frames
+#   - odom
+#   - px4flow
+#   - vibration
+#   - wheel_odometry

@@ -1,0 +1,5 @@
+repositories:
+  ThirdParty/robots/roboligo:
+    type: git
+    url: https://github.com/juanscelyg/roboligo.git
+    version: jazzy
