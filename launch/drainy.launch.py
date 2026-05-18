@@ -20,7 +20,7 @@
 import os
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, IncludeLaunchDescription, DeclareLaunchArgument, OpaqueFunction, RegisterEventHandler
+from launch.actions import ExecuteProcess, IncludeLaunchDescription, DeclareLaunchArgument, OpaqueFunction, RegisterEventHandler, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch.substitutions import Command, PathJoinSubstitution, LaunchConfiguration, FindExecutable
@@ -66,8 +66,6 @@ def generate_launch_description():
 			description='Z init position',
     )
 
-    sdf_file = os.path.join(sim_path, 'models', 'drainy', 'model.sdf')
-
     # NOTE: Removed empty child_frame_id which was causing TF errors
     # tf = Node(
     #     package='tf2_ros',
@@ -75,36 +73,24 @@ def generate_launch_description():
     #     arguments = ['--x', '0', '--y', '0', '--z', '0', '--yaw', '0', '--pitch', '0', '--roll', '0', '--frame-id', 'world', '--child-frame-id', 'base_link']
     # )
 
-    robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name="xacro")]),
-            " ",
-            sdf_file,
-            " ",
-            "prefix:=", prefix
-        ]
-    )
-    robot_description_param = launch_ros.descriptions.ParameterValue(robot_description_content, value_type=str)
+    sdf_file = os.path.join(sim_path, 'models', 'drainy', 'model.sdf')
 
-    robot_state_publisher_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        name='robot_state_publisher',
-        #namespace=robot_id,
-        output='screen',
-        parameters=[{
-          'use_sim_time': True,
-          'robot_description': robot_description_param,
-          'publish_frequency': 100.0,
-          'frame_prefix': '',
-        }],
-    )
+    with open(sdf_file, 'r') as infp:
+        robot_desc = infp.read()
 
-    joint_state_publisher_node = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        name='joint_state_publisher'
-    )
+    # robot_state_publisher_node = Node(
+    #     package='robot_state_publisher',
+    #     executable='robot_state_publisher',
+    #     name='robot_state_publisher',
+    #     #namespace=robot_id,
+    #     output='screen',
+    #     parameters=[{
+    #       'use_sim_time': True,
+    #       'robot_description': robot_desc,
+    #       'publish_frequency': 100.0,
+    #       'frame_prefix': '',
+    #     }],
+    # )
 
     gazebo_sim = ExecuteProcess(
         cmd=[
@@ -161,16 +147,23 @@ def generate_launch_description():
         ],
     )
 
-    params_file = os.path.join(pkg_path, 'config', 'drone.params.yaml')
+    roboligo_params_file = os.path.join(pkg_path, 'config', 'roboligo.params.yaml')
     
     roboligo = Node(
             package="roboligo_system",
             executable="roboligo_main",
             output="screen",
             parameters=[
-                params_file,
+                roboligo_params_file,
             ],
         )
+    
+    static_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        arguments=['--x', '0', '--y', '0', '--z', '0', '--yaw', '0', '--pitch', '0', '--roll', '0', '--frame-id', 'base_link', '--child-frame-id', 'drainy_0'],
+        output='screen',
+    )
 
     on_gazebo_init = RegisterEventHandler(
         OnProcessStart(
@@ -209,10 +202,10 @@ def generate_launch_description():
         z_arg,
         OpaqueFunction(function=get_world),
         gazebo_sim,
+        static_tf,
         on_gazebo_init,
         on_px4_init,
-        on_bridge_init,
-        robot_state_publisher_node,
-        # joint_state_publisher_node
+        on_bridge_init
+        # robot_state_publisher_node,
     ])
 

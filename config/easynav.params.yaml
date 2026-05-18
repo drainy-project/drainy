@@ -1,0 +1,68 @@
+# controller_node:
+#   ros__parameters:
+#     use_sim_time: true
+#     controller_types: [drainy]
+#     drainy:
+#       freg: 20.0
+#       rt_freq: 10.0 
+#       plugin: drainy_controller/DrainyController
+
+controller_node:
+  ros__parameters:
+    use_sim_time: true
+    controller_types: [dummy]
+    dummy:
+      rt_freq: 30.0 
+      plugin: easynav_controller/DummyController
+      cycle_time_nort: 0.01
+      cycle_time_rt: 0.001
+
+localizer_node:
+  ros__parameters:
+    use_sim_time: true
+    localizer_types: [drainy]
+    drainy:
+      freq: 10.0
+      plugin: drainy_localizer/DrainyLocalizer
+
+maps_manager_node:
+  ros__parameters:
+    use_sim_time: true
+    map_types: [dummy]
+    dummy:
+      freq: 5.0 
+      plugin: easynav_maps_manager/DummyMapsManager
+
+# planner_node:
+#   ros__parameters:
+#     use_sim_time: true
+#     planner_types: [dummy]
+#     dummy:
+#       freq: 1.0
+#       plugin: drainy_planner/DrainyPlanner
+
+planner_node:
+  ros__parameters:
+    use_sim_time: true
+    planner_types: [dummy]
+    dummy:
+      freq: 1.0
+      plugin: easynav_planner/DummyPlanner
+      cycle_time_nort: 0.2
+      cycle_time_rt: 0.001
+
+sensors_node:
+  ros__parameters:
+    use_sim_time: true
+    forget_time: 0.5
+    sensors: [rgbd]
+    perception_default_frame: odom
+    rgbd:
+      topic: /depth_camera/points
+      type: sensor_msgs/msg/PointCloud2
+
+system_node:
+  ros__parameters:
+    use_sim_time: true  
+    position_tolerance: 0.1
+    angle_tolerance: 0.05
