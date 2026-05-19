@@ -2,7 +2,18 @@
 #
 /**:
   ros__parameters:
+    tf:
+      send: false
     startup_px4_usb_quirk: false
+    use_sim_time: true
+
+
+mavros:
+  ros__parameters:
+    tf:
+      send: false
+
+
 
 # --- system plugins ---
 

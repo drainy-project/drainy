@@ -33,23 +33,23 @@ maps_manager_node:
       freq: 5.0 
       plugin: easynav_maps_manager/DummyMapsManager
 
+planner_node:
+  ros__parameters:
+    use_sim_time: true
+    planner_types: [drainy]
+    drainy:
+      freq: 1.0
+      plugin: drainy_planner/DrainyPlanner
+
 # planner_node:
 #   ros__parameters:
 #     use_sim_time: true
 #     planner_types: [dummy]
 #     dummy:
 #       freq: 1.0
-#       plugin: drainy_planner/DrainyPlanner
-
-planner_node:
-  ros__parameters:
-    use_sim_time: true
-    planner_types: [dummy]
-    dummy:
-      freq: 1.0
-      plugin: easynav_planner/DummyPlanner
-      cycle_time_nort: 0.2
-      cycle_time_rt: 0.001
+#       plugin: easynav_planner/DummyPlanner
+#       cycle_time_nort: 0.2
+#       cycle_time_rt: 0.001
 
 sensors_node:
   ros__parameters:
@@ -64,5 +64,6 @@ sensors_node:
 system_node:
   ros__parameters:
     use_sim_time: true  
+    robot_frame: drainy_0
     position_tolerance: 0.1
     angle_tolerance: 0.05

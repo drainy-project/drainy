@@ -5,8 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
-        - /TF1/Tree1/map1
-        - /TF1/Tree1/map1/odom1
       Splitter Ratio: 0.5764706134796143
     Tree Height: 542
   - Class: rviz_common/Selection
@@ -26,7 +24,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: DepthCamera
+    SyncSource: RGBD Easynav
 Visualization Manager:
   Class: ""
   Displays:
@@ -56,11 +54,11 @@ Visualization Manager:
       Frames:
         All Enabled: false
         base_link:
-          Value: true
+          Value: false
         base_link_frd:
           Value: false
         drainy_0:
-          Value: false
+          Value: true
         drainy_0/base_link:
           Value: false
         drainy_0/base_link/air_pressure_sensor:
@@ -71,25 +69,17 @@ Visualization Manager:
           Value: false
         drainy_0/base_link/navsat_sensor:
           Value: false
-        drainy_0/drainy_0/camera_link:
-          Value: false
-        drainy_0/drainy_0/camera_link/camera_depth:
-          Value: false
-        drainy_0/drainy_0/camera_link/camera_image:
-          Value: false
+        drainy_0/camera_link:
+          Value: true
+        drainy_0/camera_link/camera_depth:
+          Value: true
+        drainy_0/camera_link/camera_image:
+          Value: true
         drainy_0/drainy_0/lidar_sensor_link:
           Value: false
         drainy_0/drainy_0/lidar_sensor_link/lidar_3d:
           Value: false
         drainy_0/ouster_os1_link:
-          Value: false
-        drainy_0/rotor_0:
-          Value: false
-        drainy_0/rotor_1:
-          Value: false
-        drainy_0/rotor_2:
-          Value: false
-        drainy_0/rotor_3:
           Value: false
         map:
           Value: true
@@ -103,43 +93,32 @@ Visualization Manager:
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: true
+      Show Names: false
       Tree:
         map:
           map_ned:
             {}
           odom:
-            base_link:
-              base_link_frd:
+            drainy_0:
+              drainy_0/base_link:
+                drainy_0/base_link/air_pressure_sensor:
+                  {}
+                drainy_0/base_link/imu_sensor:
+                  {}
+                drainy_0/base_link/magnetometer_sensor:
+                  {}
+                drainy_0/base_link/navsat_sensor:
+                  {}
+              drainy_0/camera_link:
+                drainy_0/camera_link/camera_depth:
+                  {}
+                drainy_0/camera_link/camera_image:
+                  {}
+              drainy_0/drainy_0/lidar_sensor_link:
+                drainy_0/drainy_0/lidar_sensor_link/lidar_3d:
+                  {}
+              drainy_0/ouster_os1_link:
                 {}
-              drainy_0:
-                drainy_0/base_link:
-                  drainy_0/base_link/air_pressure_sensor:
-                    {}
-                  drainy_0/base_link/imu_sensor:
-                    {}
-                  drainy_0/base_link/magnetometer_sensor:
-                    {}
-                  drainy_0/base_link/navsat_sensor:
-                    {}
-                drainy_0/drainy_0/camera_link:
-                  drainy_0/drainy_0/camera_link/camera_depth:
-                    {}
-                  drainy_0/drainy_0/camera_link/camera_image:
-                    {}
-                drainy_0/drainy_0/lidar_sensor_link:
-                  drainy_0/drainy_0/lidar_sensor_link/lidar_3d:
-                    {}
-                drainy_0/ouster_os1_link:
-                  {}
-                drainy_0/rotor_0:
-                  {}
-                drainy_0/rotor_1:
-                  {}
-                drainy_0/rotor_2:
-                  {}
-                drainy_0/rotor_3:
-                  {}
             odom_ned:
               {}
       Update Interval: 0
@@ -180,8 +159,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.736555576324463
-        Min Value: -1.5487303733825684
+        Max Value: 2.0562119483947754
+        Min Value: -0.3384903073310852
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -227,8 +206,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.7583454847335815
-        Min Value: -0.2116909623146057
+        Max Value: 1.6241413354873657
+        Min Value: -0.17699068784713745
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -236,7 +215,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: AxisColor
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -256,11 +235,44 @@ Visualization Manager:
         Value: /sensors_node/perceptions
       Use Fixed Frame: true
       Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 1.5707684755325317
+        Min Value: -0.13227054476737976
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: AxisColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Detection
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.05000000074505806
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /planner_node/drainy/detection
+      Use Fixed Frame: true
+      Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -303,25 +315,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 4.448777675628662
+      Distance: 4.213442802429199
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.02240130305290222
-        Y: 0.18289390206336975
-        Z: 1.130786418914795
+        X: 1.0233874320983887
+        Y: -1.1807042360305786
+        Z: 0.7940286993980408
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.26020318269729614
+      Pitch: 0.44520238041877747
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.9703943729400635
+      Yaw: 3.450395345687866
     Saved: ~
 Window Geometry:
   Displays:
@@ -341,5 +353,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1443
-  X: 227
-  Y: 125
+  X: 302
+  Y: 114
