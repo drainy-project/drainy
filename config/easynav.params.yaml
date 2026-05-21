@@ -40,6 +40,7 @@ planner_node:
     drainy:
       freq: 1.0
       plugin: drainy_planner/DrainyPlanner
+      min_error: 0.5
 
 # planner_node:
 #   ros__parameters:
