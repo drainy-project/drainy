@@ -1,0 +1,22 @@
+services:
+  drainy_sim:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: sim
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    volumes:
+      - ../../drainy:/root/drainy_ws/src/drainy
+      - ../../drainy_autonomous:/root/drainy_ws/src/drainy_autonomous
+      - /dev/dri:/dev/dri
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    command: "/bin/bash"
