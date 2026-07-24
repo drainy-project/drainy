@@ -24,53 +24,50 @@ FROM base as dev
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update \
-    && apt install --no-install-recommends -y curl gnupg lsb-release git build-essential nano 
-
-RUN mkdir -p /root/drainy_ws/src \
-    && source /opt/ros/humble/setup.bash \
-    && source "/root/.bashrc" \
-    && apt-get update \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/EasyNavigation.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/NavMap.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/easynav_plugins.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
-    && cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r \
-    && cd /root/drainy_ws && colcon build --symlink-install\
-    && source /root/drainy_ws/install/setup.bash \
-    && rm -rf /var/lib/apt/lists/*
-
-
-RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-# RUN echo "source /root/env/bin/activate" >> ~/.bashrc
-
-ENV DEBIAN_FRONTEND=dialog
-
-FROM base as sim 
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt update \
-    && apt install --no-install-recommends -y curl gnupg lsb-release git build-essential nano 
+    && apt install -y wget curl gnupg lsb-release git build-essential nano \
+    && apt install -y ros-humble-ament-cmake* \
+                        ros-humble-rclcpp
 
 RUN mkdir -p /root/drainy_ws/src/ThirdParty/robots/drone \
     && mkdir -p /root/drainy_ws/src/ThirdParty/worlds \
     && source /opt/ros/humble/setup.bash \
     && source "/root/.bashrc" \
-    && apt-get update \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/EasyNavigation.git \
+    && apt-get update
+
+RUN cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/EasyNavigation.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/NavMap.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/easynav_plugins.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
-    && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git \
-    && cd /root/drainy_ws/src/ThirdParty/robots/drone && git clone -b easynav --recursive https://github.com/drainy-project/PX4-Autopilot.git \
-    && cd /root/drainy_ws/src/ThirdParty/worlds && git clone -b easynav --recursive https://github.com/drainy-project/PX4-gazebo-models.git \
-    && cd /root/drainy_ws && sh -c src/ThirdParty/robots/drone/PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx\
-    && cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r \
-    && cd /root/drainy_ws && colcon build --symlink-install\
-    && source /root/drainy_ws/install/setup.bash \
-    && rm -rf /var/lib/apt/lists/*
+    && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git
+
+RUN cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r 
+
+RUN source /opt/ros/humble/setup.bash && cd /root/drainy_ws && colcon build --symlink-install
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-# RUN echo "source /root/env/bin/activate" >> ~/.bashrc
+RUN echo "source /root/drainy_ws/install/setup.bash " >> ~/.bashrc
+
+ENV DEBIAN_FRONTEND=dialog
+
+FROM dev as sim 
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN source "/root/.bashrc"
+
+RUN cd /root/drainy_ws/src/ThirdParty/robots/drone && git clone -b easynav --recursive https://github.com/drainy-project/PX4-Autopilot.git \
+    && cd /root/drainy_ws/src/ThirdParty/worlds && git clone -b easynav --recursive https://github.com/drainy-project/PX4-gazebo-models.git 
+
+RUN cd /root/drainy_ws && sh -c src/ThirdParty/robots/drone/PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx
+
+RUN cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r 
+
+RUN source /opt/ros/humble/setup.bash && cd /root/drainy_ws && colcon build --symlink-install
+
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN source /root/drainy_ws/install/setup.bash
 
 ENV DEBIAN_FRONTEND=dialog
