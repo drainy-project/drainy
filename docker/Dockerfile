@@ -6,7 +6,7 @@ LABEL contact="juanscelyg@gmail.com"
 LABEL description="Drainy Docker"
 
 ARG ROS_VERSION="humble"
-ARG ROS_DOMAIN_ID="32"
+ARG ROS_DOMAIN_ID="73"
 
 # ==
 # Disable dialog frontend
@@ -48,6 +48,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /root/drainy_ws/install/setup.bash " >> ~/.bashrc
+RUN echo "export ROS_DOMAIN_ID=${ROS_DOMAIN_ID}" >> ~/.bashrc
 
 ENV DEBIAN_FRONTEND=dialog
 
