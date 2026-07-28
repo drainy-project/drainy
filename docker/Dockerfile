@@ -26,7 +26,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update \
     && apt install -y wget curl gnupg lsb-release git build-essential nano \
     && apt install -y ros-humble-ament-cmake* \
-                        ros-humble-rclcpp
+                        ros-humble-rclcpp \
+                        ros-humble-ouster*
 
 RUN mkdir -p /root/drainy_ws/src/ThirdParty/robots/drone \
     && mkdir -p /root/drainy_ws/src/ThirdParty/worlds \
@@ -38,6 +39,7 @@ RUN cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigat
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/NavMap.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/easynav_plugins.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
+    && cd /root/drainy_ws/src && git clone https://github.com/drainy-project/genz-icp.git \
     && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git
 
 RUN cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r 
