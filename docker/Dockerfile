@@ -39,6 +39,8 @@ RUN cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigat
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/NavMap.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/easynav_plugins.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
+    && cd /root/drainy_ws/src && git clone -b humble https://github.com/micro-ROS/micro-ROS-Agent.git \
+    && cd /root/drainy_ws/src && git clone -b release/1.16 https://github.com/PX4/px4_msgs.git \ 
     && cd /root/drainy_ws/src && git clone https://github.com/drainy-project/genz-icp.git \
     && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git
 
