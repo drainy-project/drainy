@@ -36,8 +36,8 @@ RUN mkdir -p /root/drainy_ws/src/ThirdParty/robots/drone \
     && apt-get update
 
 RUN cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/EasyNavigation.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/NavMap.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/easynav_plugins.git \
+    && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/NavMap.git \
+    && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/easynav_plugins.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
     && cd /root/drainy_ws/src && git clone https://github.com/drainy-project/genz-icp.git \
     && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git
