@@ -18,7 +18,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 # ==
 SHELL ["/bin/bash", "-c"]
 
-
 FROM base as dev
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -33,16 +32,16 @@ RUN mkdir -p /root/drainy_ws/src/ThirdParty/robots/drone \
     && mkdir -p /root/drainy_ws/src/ThirdParty/worlds \
     && source /opt/ros/humble/setup.bash \
     && source "/root/.bashrc" \
-    && apt-get update
+    && apt update && apt upgrade -y
 
 RUN cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/EasyNavigation.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/NavMap.git \
-    && cd /root/drainy_ws/src && git clone -b humble https://github.com/juanscelyg/easynav_plugins.git \
+    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/NavMap.git \
+    && cd /root/drainy_ws/src && git clone -b humble https://github.com/EasyNavigation/easynav_plugins.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/fmrico/yaets.git \
     && cd /root/drainy_ws/src && git clone -b humble https://github.com/micro-ROS/micro-ROS-Agent.git \
     && cd /root/drainy_ws/src && git clone -b release/1.16 https://github.com/PX4/px4_msgs.git \ 
     && cd /root/drainy_ws/src && git clone https://github.com/drainy-project/genz-icp.git \
-    && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b jazzy https://github.com/juanscelyg/roboligo.git
+    && cd /root/drainy_ws/src/ThirdParty/robots && git clone -b humble https://github.com/juanscelyg/roboligo.git
 
 RUN cd /root/drainy_ws && rosdep install --from-paths src --ignore-src -y -r 
 
@@ -54,9 +53,11 @@ RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo "source /root/drainy_ws/install/setup.bash " >> ~/.bashrc
 RUN echo "export ROS_DOMAIN_ID=${ROS_DOMAIN_ID}" >> ~/.bashrc
 
+RUN cd /root/drainy_ws
+
 ENV DEBIAN_FRONTEND=dialog
 
-FROM dev as sim 
+FROM dev as sim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -74,5 +75,7 @@ RUN source /opt/ros/humble/setup.bash && cd /root/drainy_ws && colcon build --sy
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN source /root/drainy_ws/install/setup.bash
+
+RUN cd /root/drainy_ws
 
 ENV DEBIAN_FRONTEND=dialog
