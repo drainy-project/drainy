@@ -2,7 +2,7 @@ repositories:
   ThirdParty/robots/roboligo:
     type: git
     url: https://github.com/juanscelyg/roboligo.git
-    version: jazzy
+    version: humble
   ThirdParty/robots/drone/PX4-Autopilot:
     type: git
     url: https://github.com/drainy-project/PX4-Autopilot.git

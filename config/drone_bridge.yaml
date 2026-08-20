@@ -14,14 +14,6 @@
   direction: GZ_TO_ROS
   lazy: false
 
-# Rotor joints
-# - ros_topic_name: "tf"
-#   gz_topic_name: "/model/drainy_0/pose"
-#   ros_type_name: "tf2_msgs/msg/TFMessage"
-#   gz_type_name: "gz.msgs.Pose_V"
-#   direction: GZ_TO_ROS
-#   lazy: false
-
 # replace ground_truth 
 - ros_topic_name: "ground_truth"
   gz_topic_name: "/model/drainy_0/odometry"

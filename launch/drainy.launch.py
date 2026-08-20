@@ -205,7 +205,7 @@ def generate_launch_description():
         # static_tf,
         on_gazebo_init,
         on_px4_init,
-        on_bridge_init
+        # on_bridge_init
         # robot_state_publisher_node,
     ])
 
