@@ -7,6 +7,8 @@ services:
     stdin_open: true
     tty: true
     network_mode: "host"
+    tmpfs:
+      - /tmp/runtime-root:mode=700
     volumes:
       - ../../drainy:/root/drainy_ws/src/drainy
       - ../../drainy_autonomous:/root/drainy_ws/src/drainy_autonomous
@@ -19,4 +21,5 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=all
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
+      - XDG_RUNTIME_DIR=/tmp/runtime-root
     command: "/bin/bash"
