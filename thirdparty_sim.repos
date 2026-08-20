@@ -1,4 +1,12 @@
 repositories:
+  ThirdParty/EasyNavigation/easynav:
+    type: git
+    url: https://github.com/EasyNavigation/EasyNavigation.git
+    version: humble
+  ThirdParty/EasyNavigation/easynav_plugins:
+    type: git
+    url: https://github.com/EasyNavigation/easynav_plugins.git
+    version: humble
   ThirdParty/robots/roboligo:
     type: git
     url: https://github.com/juanscelyg/roboligo.git
