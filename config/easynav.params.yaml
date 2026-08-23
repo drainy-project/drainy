@@ -27,10 +27,12 @@ localizer_node:
 maps_manager_node:
   ros__parameters:
     use_sim_time: true
-    map_types: [dummy]
-    dummy:
+    map_types: [drainy]
+    drainy:
       freq: 5.0 
-      plugin: easynav_maps_manager/DummyMapsManager
+      plugin: drainy_maps_manager/DrainyMapsManager
+      map_path: /home/juanscelyg/ws/drainy_ws/
+      map_topic: /genz/local_map
 
 planner_node:
   ros__parameters:
