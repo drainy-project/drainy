@@ -62,7 +62,7 @@ def generate_launch_description():
 
     z_arg = DeclareLaunchArgument(
         	'z',
-			default_value='0.25',
+			default_value='0',
 			description='Z init position',
     )
 

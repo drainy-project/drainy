@@ -24,25 +24,43 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LocalMap
 Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
       Cell Size: 1
       Class: rviz_default_plugins/Grid
-      Color: 160; 160; 164
+      Color: 246; 97; 81
       Enabled: true
       Line Style:
         Line Width: 0.029999999329447746
         Value: Lines
-      Name: Grid
+      Name: GridXY
       Normal Cell Count: 0
       Offset:
         X: 0
         Y: 0
         Z: 0
       Plane: XY
+      Plane Cell Count: 50
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_default_plugins/Grid
+      Color: 153; 193; 241
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: GridXZ
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XZ
       Plane Cell Count: 50
       Reference Frame: <Fixed Frame>
       Value: true
@@ -98,6 +116,29 @@ Visualization Manager:
         map:
           map_ned:
             {}
+          odom:
+            drainy_0:
+              drainy_0/base_link:
+                drainy_0/base_link/air_pressure_sensor:
+                  {}
+                drainy_0/base_link/imu_sensor:
+                  {}
+                drainy_0/base_link/magnetometer_sensor:
+                  {}
+                drainy_0/base_link/navsat_sensor:
+                  {}
+              drainy_0/camera_link:
+                drainy_0/camera_link/camera_depth:
+                  {}
+                drainy_0/camera_link/camera_image:
+                  {}
+              drainy_0/drainy_0/lidar_sensor_link:
+                drainy_0/drainy_0/lidar_sensor_link/lidar_3d:
+                  {}
+              drainy_0/ouster_os1_link:
+                {}
+            odom_ned:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -136,8 +177,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 2.0562119483947754
-        Min Value: -0.3384903073310852
+        Max Value: 2.9256958961486816
+        Min Value: -0.35766035318374634
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -316,8 +357,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 2.0949480533599854
-        Min Value: -0.2264847308397293
+        Max Value: 3.201162099838257
+        Min Value: -1.6474539041519165
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -331,7 +372,7 @@ Visualization Manager:
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: LocalMap
       Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
@@ -392,25 +433,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 9.844282150268555
+      Distance: 14.484174728393555
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 3.46895170211792
-        Y: -1.2863078117370605
-        Z: 2.432253122329712
+        X: 8.26801872253418
+        Y: 0.9049157500267029
+        Z: -1.8292218446731567
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2802022099494934
+      Pitch: 0.3302026689052582
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.655395030975342
+      Yaw: 3.3853771686553955
     Saved: ~
 Window Geometry:
   Displays:
@@ -430,5 +471,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1443
-  X: 2178
-  Y: 193
+  X: 2142
+  Y: 171
