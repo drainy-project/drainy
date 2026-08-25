@@ -13,7 +13,7 @@ controller_node:
 #     controller_types: [dummy]
 #     dummy:
 #       freq: 10.0
-#       rt_freq: 20.0 
+#       rt_freq: 10.0 
 #       plugin: easynav_controller/DummyController
 
 localizer_node:
@@ -21,8 +21,21 @@ localizer_node:
     use_sim_time: true
     localizer_types: [drainy]
     drainy:
+      rt_freq: 10.0
       freq: 10.0
       plugin: drainy_localizer/DrainyLocalizer
+
+# localizer_node:
+#   ros__parameters:
+#     use_sim_time: true
+#     localizer_types: [dummy]
+#     dummy:
+#       rt_freq: 50.0
+#       freq: 5.0
+#       reseed_freq: 0.1
+#       plugin: easynav_localizer/DummyLocalizer
+#       cycle_time_nort: 0.01
+#       cycle_time_rt: 0.001
 
 maps_manager_node:
   ros__parameters:
@@ -67,5 +80,5 @@ system_node:
   ros__parameters:
     use_sim_time: true  
     robot_frame: drainy_0
-    position_tolerance: 0.1
+    position_tolerance: 0.5
     angle_tolerance: 0.05
