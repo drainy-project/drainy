@@ -54,7 +54,8 @@ planner_node:
     drainy:
       freq: 1.0
       plugin: drainy_planner/DrainyPlanner
-      min_error: 0.5
+      cost_factor: 1.0
+      continuous_replan: false
 
 # planner_node:
 #   ros__parameters:
@@ -79,6 +80,7 @@ sensors_node:
 system_node:
   ros__parameters:
     use_sim_time: true  
+    use_real_time: false
     robot_frame: drainy_0
     position_tolerance: 0.5
     angle_tolerance: 0.05
