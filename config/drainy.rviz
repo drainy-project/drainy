@@ -275,13 +275,13 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /genz/odometry
+        Value: /localizer_node/drainy/odometry
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 2.683035135269165
-        Min Value: -0.9281406402587891
+        Max Value: 2.9786577224731445
+        Min Value: -1.3339987993240356
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -314,7 +314,7 @@ Visualization Manager:
       Class: navmap_rviz_plugin/NavMapDisplay
       Color Scheme: Heat
       Draw Normals: false
-      Enabled: true
+      Enabled: false
       Layer: elevation
       Name: NavMapDisplay
       Normal Scale: 0.15000000596046448
@@ -331,7 +331,7 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /maps_manager_node/drainy/navmap_layers
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -393,10 +393,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3352028727531433
+      Pitch: 0.26020294427871704
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.870370626449585
+      Yaw: 3.290372848510742
     Saved: ~
 Window Geometry:
   Displays:

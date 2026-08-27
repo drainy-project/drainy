@@ -21,7 +21,7 @@ localizer_node:
     use_sim_time: true
     localizer_types: [drainy]
     drainy:
-      rt_freq: 10.0
+      rt_freq: 20.0
       freq: 10.0
       plugin: drainy_localizer/DrainyLocalizer
 
@@ -72,7 +72,7 @@ sensors_node:
     use_sim_time: true
     forget_time: 0.5
     sensors: [rgbd]
-    perception_default_frame: odom
+    # perception_default_frame: odom
     rgbd:
       topic: /depth_camera/points
       type: sensor_msgs/msg/PointCloud2
