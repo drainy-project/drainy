@@ -4,7 +4,6 @@ controller_node:
     controller_types: [drainy]
     drainy:
       freq: 10.0
-      rt_freq: 20.0 
       plugin: drainy_controller/DrainyController
 
 # controller_node:
@@ -21,8 +20,7 @@ localizer_node:
     use_sim_time: true
     localizer_types: [drainy]
     drainy:
-      rt_freq: 20.0
-      freq: 10.0
+      freq: 20.0
       plugin: drainy_localizer/DrainyLocalizer
 
 # localizer_node:
@@ -42,7 +40,7 @@ maps_manager_node:
     use_sim_time: true
     map_types: [drainy]
     drainy:
-      freq: 5.0 
+      freq: 0.5 
       plugin: drainy_maps_manager/DrainyMapsManager
       map_path: /home/juanscelyg/ws/drainy_ws/
       map_topic: /genz/local_map
@@ -57,29 +55,19 @@ planner_node:
       cost_factor: 1.0
       continuous_replan: false
 
-# planner_node:
-#   ros__parameters:
-#     use_sim_time: true
-#     planner_types: [dummy]
-#     dummy:
-#       freq: 1.0
-#       plugin: easynav_planner/DummyPlanner
-#       cycle_time_nort: 0.2
-#       cycle_time_rt: 0.001
-
 sensors_node:
   ros__parameters:
     use_sim_time: true
     forget_time: 0.5
     sensors: [rgbd]
-    # perception_default_frame: odom
+    perception_default_frame: odom
     rgbd:
       topic: /depth_camera/points
       type: sensor_msgs/msg/PointCloud2
 
 system_node:
   ros__parameters:
-    use_sim_time: true  
+    use_sim_time: true
     use_real_time: false
     robot_frame: drainy_0
     position_tolerance: 0.5
