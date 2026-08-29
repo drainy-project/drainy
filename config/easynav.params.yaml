@@ -52,7 +52,6 @@ planner_node:
     drainy:
       freq: 1.0
       plugin: drainy_planner/DrainyPlanner
-      cost_factor: 1.0
       continuous_replan: false
 
 sensors_node:
