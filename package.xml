@@ -8,6 +8,13 @@
   <license>GPL-3.0-only</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>drainy_common</depend>
+  <depend>drainy_controller</depend>
+  <depend>drainy_explorer</depend>
+  <depend>drainy_localizer</depend>
+  <depend>drainy_maps_manager</depend>
+  <depend>drainy_planner</depend>
   
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

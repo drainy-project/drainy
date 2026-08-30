@@ -44,15 +44,29 @@ maps_manager_node:
       plugin: drainy_maps_manager/DrainyMapsManager
       map_path: /home/juanscelyg/ws/drainy_ws/
       map_topic: /genz/local_map
+      filter_min: 0.75
+      filter_max: 1.25
+      max_lenght: 50.0
+      resolution: 0.5
+
+# planner_node:
+#   ros__parameters:
+#     use_sim_time: true
+#     planner_types: [drainy]
+#     drainy:
+#       freq: 1.0
+#       plugin: drainy_planner/DrainyPlanner
+#       continuous_replan: false
 
 planner_node:
   ros__parameters:
     use_sim_time: true
-    planner_types: [drainy]
-    drainy:
+    planner_types: [dummy]
+    dummy:
       freq: 1.0
-      plugin: drainy_planner/DrainyPlanner
-      continuous_replan: false
+      plugin: easynav_planner/DummyPlanner
+      cycle_time_nort: 0.2
+      cycle_time_rt: 0.001
 
 sensors_node:
   ros__parameters:
