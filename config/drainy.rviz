@@ -100,8 +100,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.6506636142730713
-        Min Value: -1.931681513786316
+        Max Value: 2.6400718688964844
+        Min Value: -1.121397852897644
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -214,8 +214,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.2491915225982666
-        Min Value: 0.750553548336029
+        Max Value: 1.2491931915283203
+        Min Value: 0.7529149651527405
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -241,62 +241,6 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /maps_manager_node/drainy/cloud_filtered
-      Use Fixed Frame: true
-      Use rainbow: true
-      Value: true
-    - Alpha: 1
-      Class: navmap_rviz_plugin/NavMapDisplay
-      Color Scheme: Heat
-      Draw Normals: false
-      Enabled: true
-      Layer: elevation
-      Name: NavMapDisplay
-      Normal Scale: 0.15000000596046448
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /maps_manager_node/drainy/navmap
-      Update Layer Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /maps_manager_node/drainy/navmap_layers
-      Value: true
-    - Alpha: 1
-      Autocompute Intensity Bounds: true
-      Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
-        Value: true
-      Axis: Z
-      Channel Name: y
-      Class: rviz_default_plugins/LaserScan
-      Color: 255; 255; 255
-      Color Transformer: FlatColor
-      Decay Time: 0
-      Enabled: true
-      Invert Rainbow: false
-      Max Color: 255; 255; 255
-      Max Intensity: 8.855599403381348
-      Min Color: 0; 0; 0
-      Min Intensity: -2.2357258796691895
-      Name: LaserScan
-      Position Transformer: XYZ
-      Selectable: true
-      Size (Pixels): 3
-      Size (m): 0.05000000074505806
-      Style: Flat Squares
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /maps_manager_node/drainy/scan
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -384,10 +328,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.33520275354385376
+      Pitch: 0.3152027428150177
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.40537428855896
+      Yaw: 3.415374517440796
     Saved: ~
 Window Geometry:
   Displays:

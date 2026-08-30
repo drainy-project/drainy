@@ -15,3 +15,7 @@ repositories:
     type: git
     url: https://github.com/juanscelyg/roboligo.git
     version: humble
+  ThirdParty/genz-icp:
+    type: git
+    url: https://github.com/drainy-project/genz-icp.git
+    version: easynav
