@@ -5,6 +5,10 @@ controller_node:
     drainy:
       freq: 10.0
       plugin: drainy_controller/DrainyController
+      x_gain: 0.8
+      y_gain: 0.5
+      z_gain: 0.5
+      yaw_gain: 0.3
 
 # controller_node:
 #   ros__parameters:
