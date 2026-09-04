@@ -9,6 +9,7 @@ controller_node:
       y_gain: 0.8
       z_gain: 0.5
       yaw_gain: 0.3
+      safety_radius: 1.0 
 
 # controller_node:
 #   ros__parameters:
@@ -89,5 +90,6 @@ system_node:
     use_sim_time: true
     use_real_time: false
     robot_frame: drainy_0
+    robot_footprint_frame: drainy_0
     position_tolerance: 0.5
-    angle_tolerance: 0.05
+    angle_tolerance: 0.1
