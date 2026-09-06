@@ -5,9 +5,10 @@ controller_node:
     drainy:
       freq: 10.0
       plugin: drainy_controller/DrainyController
-      x_gain: 0.8
-      z_gain: 0.8
-      yaw_gain: 0.8
+      x_gain: 1.0
+      y_gain: 1.0
+      z_gain: 1.0
+      yaw_gain: 1.5
       safety_radius: 1.0 
 
 # controller_node:
