@@ -5,10 +5,10 @@ controller_node:
     drainy:
       freq: 10.0
       plugin: drainy_controller/DrainyController
-      x_gain: 1.0
-      y_gain: 1.0
+      x_gain: 0.8
+      y_gain: 0.8
       z_gain: 1.0
-      yaw_gain: 1.5
+      yaw_gain: 1.0
       safety_radius: 1.0 
 
 # controller_node:
@@ -49,8 +49,8 @@ maps_manager_node:
       plugin: drainy_maps_manager/DrainyMapsManager
       map_path: /home/juanscelyg/ws/drainy_ws/
       map_topic: /genz/local_map
-      filter_min: 0.95
-      filter_max: 1.05
+      filter_min: 0.9
+      filter_max: 1.1
       max_lenght: 150.0
       resolution: 0.5
       confidence_lenght: 1.0
@@ -92,4 +92,4 @@ system_node:
     robot_frame: drainy_0
     robot_footprint_frame: drainy_0
     position_tolerance: 0.5
-    angle_tolerance: 0.1
+    angle_tolerance: 0.3
