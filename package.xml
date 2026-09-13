@@ -15,6 +15,7 @@
   <depend>drainy_localizer</depend>
   <depend>drainy_maps_manager</depend>
   <depend>drainy_planner</depend>
+  <depend>roboligo</depend>
   
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
