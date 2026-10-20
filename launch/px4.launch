@@ -1,3 +1,5 @@
+<!-- Copyright 2026 Intelligent Robotics Lab -->
+
 <launch>
 	<arg name="fcu_url" default="/dev/ttyACM0:57600" />
 	<arg name="gcs_url" default="" />

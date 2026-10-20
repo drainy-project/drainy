@@ -1,22 +1,5 @@
 # Copyright 2026 Intelligent Robotics Lab
 
-# This file is part of the project Easy Navigation (EasyNav in short)
-# licensed under the GNU General Public License v3.0.
-# See <http://www.gnu.org/licenses/> for details.
-
-# Easy Navigation program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
-
 import os
 from ament_index_python.packages import get_package_prefix, get_package_share_directory
 from launch import LaunchDescription
@@ -101,7 +84,7 @@ def generate_launch_description():
         ],
         cwd=sim_path,
         output='screen'
-    )
+    ) # SIM
 
     px4_sitl = ExecuteProcess(
         cmd=[
@@ -116,7 +99,7 @@ def generate_launch_description():
             'PX4_GZ_MODEL_POSE': ([LaunchConfiguration('x'),',', LaunchConfiguration('y'),',', LaunchConfiguration('z'),',0,0,0']),
         },
         output='screen'
-    )
+    ) # SIM
 
     bridge = Node(
         package='ros_gz_bridge',
@@ -131,7 +114,7 @@ def generate_launch_description():
             }
         ],
         output='screen',
-    )
+    )# SIM
 
     # Image bridge
     gz_image_bridge_node = Node(
@@ -145,7 +128,7 @@ def generate_launch_description():
             {'use_sim_time': True,
              'camera.image.compressed.jpeg_quality': 75},
         ],
-    )
+    ) # SIM
 
     roboligo_params_file = os.path.join(pkg_path, 'config', 'roboligo.params.yaml')
     

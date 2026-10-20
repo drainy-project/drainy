@@ -1,20 +1,4 @@
 repositories:
-  ThirdParty/EasyNavigation/easynav:
-    type: git
-    url: https://github.com/EasyNavigation/EasyNavigation.git
-    version: humble
-  ThirdParty/EasyNavigation/easynav_plugins:
-    type: git
-    url: https://github.com/EasyNavigation/easynav_plugins.git
-    version: humble
-  ThirdParty/EasyNavigation/NavMap:
-    type: git
-    url: https://github.com/EasyNavigation/NavMap.git
-    version: humble
-  ThirdParty/robots/roboligo:
-    type: git
-    url: https://github.com/juanscelyg/roboligo.git
-    version: humble
   ThirdParty/robots/drone/PX4-Autopilot:
     type: git
     url: https://github.com/drainy-project/PX4-Autopilot.git
@@ -22,8 +6,4 @@ repositories:
   ThirdParty/worlds/PX4-gazebo-models:
     type: git
     url: https://github.com/drainy-project/PX4-gazebo-models.git
-    version: easynav
-  ThirdParty/genz-icp:
-    type: git
-    url: https://github.com/drainy-project/genz-icp.git
     version: easynav
