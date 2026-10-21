@@ -16,7 +16,7 @@ connector_node:
 roboligo_node:
   ros__parameters:
     use_sim_time: true
-    robot_name: droncito
+    robot_name: drainy
     input_topic: /cmd_vel
     stamped: false
 
